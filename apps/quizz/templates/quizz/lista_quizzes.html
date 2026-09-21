@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ducky Arena - Quiz Interactivo</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Fuente Gaming -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-dark: #080318;
+            --card-bg: rgba(19, 13, 49, 0.85);
+            --card-border: #2e1d6b;
+            --accent-yellow: #ffc700;
+            --accent-yellow-glow: rgba(255, 199, 0, 0.4);
+            --accent-purple: #8b5cf6;
+            --accent-pink: #d946ef;
+            --text-light: #ffffff;
+            --text-muted: #94a3b8;
+            --success-green: #10b981;
+            --error-red: #ef4444;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            padding-bottom: 100px;
+            min-height: 100vh;
+            background-image: 
+                radial-gradient(circle at 15% 15%, rgba(139, 92, 246, 0.2) 0%, transparent 45%),
+                radial-gradient(circle at 85% 85%, rgba(255, 199, 0, 0.12) 0%, transparent 45%);
+            background-attachment: fixed;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        .hero-banner {
+            background: linear-gradient(135deg, rgba(30, 16, 75, 0.9) 0%, rgba(15, 8, 40, 0.95) 100%);
+            border: 2px solid var(--card-border);
+            border-radius: 24px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .hero-banner::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-yellow), var(--accent-pink), var(--accent-purple));
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 0.5rem;
+        }
+
+        .brand-logo i { font-size: 1.8rem; color: var(--accent-yellow); }
+        .brand-logo span { font-size: 1.3rem; font-weight: 900; letter-spacing: 1px; color: #fff; }
+
+        .quizz-card {
+            background: var(--card-bg);
+            border: 2px solid var(--card-border);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .quizz-title { font-size: 1.8rem; font-weight: 900; color: var(--accent-yellow); }
+
+        .pregunta-box {
+            background: rgba(10, 5, 28, 0.6);
+            border-radius: 14px;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .pregunta-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 1rem;
+        }
+
+        .pregunta-number {
+            background: linear-gradient(135deg, var(--accent-purple), var(--accent-pink));
+            color: #fff;
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+        }
+
+        .pregunta-texto { font-size: 1.1rem; font-weight: 700; }
+
+        .opciones-grid { display: grid; gap: 0.8rem; list-style: none; }
+
+        .opcion-item {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--card-border);
+            border-radius: 10px;
+            padding: 1rem 1.2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-weight: 600;
+        }
+
+        .opcion-item:hover:not(.disabled) {
+            border-color: var(--accent-yellow);
+            background: rgba(255, 199, 0, 0.08);
+            transform: translateX(5px);
+        }
+
+        /* --- ESTADOS INTERACTIVOS EN TIEMPO REAL --- */
+        .opcion-item.correct {
+            border-color: var(--success-green) !important;
+            background: rgba(16, 185, 129, 0.2) !important;
+            color: #fff;
+            box-shadow: 0 0 15px rgba(16, 185, 129, 0.4);
+        }
+
+        .opcion-item.incorrect {
+            border-color: var(--error-red) !important;
+            background: rgba(239, 68, 68, 0.2) !important;
+            color: #fff;
+            box-shadow: 0 0 15px rgba(239, 68, 68, 0.4);
+        }
+
+        .opcion-item.disabled {
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+
+        .badge-status {
+            font-weight: 800;
+            font-size: 0.75rem;
+            padding: 4px 10px;
+            border-radius: 6px;
+            text-transform: uppercase;
+        }
+
+        .badge-correct { background: var(--success-green); color: #000; }
+        .badge-incorrect { background: var(--error-red); color: #fff; }
+
+        /* --- SCORE MODAL / RESUMEN --- */
+        .score-modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(8, 3, 24, 0.85);
+            backdrop-filter: blur(8px);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: var(--card-bg);
+            border: 2px solid var(--accent-yellow);
+            border-radius: 24px;
+            padding: 2.5rem;
+            text-align: center;
+            max-width: 450px;
+            width: 90%;
+            box-shadow: 0 0 30px var(--accent-yellow-glow);
+        }
+
+        .modal-content h2 { font-size: 2rem; font-weight: 900; margin-bottom: 0.5rem; }
+        .score-number { font-size: 4rem; font-weight: 900; color: var(--accent-yellow); margin: 1rem 0; }
+
+        .btn-restart {
+            background: var(--accent-yellow);
+            color: #000;
+            font-weight: 900;
+            padding: 0.8rem 2rem;
+            border-radius: 12px;
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            margin-top: 1rem;
+            transition: all 0.2s ease;
+        }
+
+        .btn-restart:hover { transform: scale(1.05); }
+
+        /* Dock flotante */
+        .bottom-dock {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(19, 13, 49, 0.95);
+            border: 2px solid var(--card-border);
+            backdrop-filter: blur(15px);
+            padding: 0.6rem 2rem;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            z-index: 1000;
+        }
+
+        .dock-item {
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+        }
+
+        .dock-item.active { color: var(--accent-yellow); }
+        .dock-item span { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- HEADER BANNER -->
+        <header class="hero-banner">
+            <div>
+                <div class="brand-logo">
+                    <i class="fa-solid fa-feather-pointed"></i>
+                    <span>DUCKY ARENA</span>
+                </div>
+                <h1 style="font-size: 1.8rem; font-weight: 900;">¡DESAFÍO EN VIVO!</h1>
+                <p style="color: var(--text-muted); font-size: 0.85rem;">Selecciona tu respuesta y acumula puntos en tiempo real.</p>
+            </div>
+            <div>
+                <i class="fa-solid fa-gamepad" style="font-size: 4rem; color: var(--accent-purple); opacity: 0.8;"></i>
+            </div>
+        </header>
+
+        <!-- LISTA DE QUIZZES -->
+        {% for quizz in quizzes %}
+            <article class="quizz-card" data-quizz-id="{{ quizz.id }}">
+                <div class="quizz-header">
+                    <h2 class="quizz-title">{{ quizz.titulo }}</h2>
+                    <p style="color: var(--text-muted);">{{ quizz.descripcion }}</p>
+                </div>
+
+                <div style="margin-top: 1.5rem;">
+                    {% for pregunta in quizz.preguntas.all %}
+                        <div class="pregunta-box" data-pregunta-id="{{ pregunta.id }}">
+                            <div class="pregunta-header">
+                                <span class="pregunta-number">{{ forloop.counter }}</span>
+                                <span class="pregunta-texto">{{ pregunta.texto }}</span>
+                            </div>
+
+                            <ul class="opciones-grid">
+                                {% for opcion in pregunta.opciones.all %}
+                                    <li class="opcion-item" 
+                                        data-correcta="{{ opcion.es_correcta|yesno:'true,false' }}"
+                                        onclick="evaluarOpcion(this)">
+                                        <span>{{ opcion.texto }}</span>
+                                        <span class="status-placeholder"></span>
+                                    </li>
+                                {% empty %}
+                                    <li class="opcion-item disabled"><em>Sin opciones registradas</em></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% empty %}
+                        <p style="color: var(--text-muted); margin-top: 1rem;">No hay preguntas en este quiz.</p>
+                    {% endfor %}
+                </div>
+            </article>
+        {% empty %}
+            <div class="quizz-card" style="text-align: center; padding: 3rem;">
+                <h2 class="quizz-title">No hay desafíos disponibles</h2>
+            </div>
+        {% endfor %}
+
+    </div>
+
+    <!-- MODAL RESULTADOS -->
+    <div class="score-modal" id="scoreModal">
+        <div class="modal-content">
+            <i class="fa-solid fa-trophy" style="font-size: 4rem; color: var(--accent-yellow);"></i>
+            <h2>¡DESAFÍO COMPLETADO!</h2>
+            <p style="color: var(--text-muted);">Tu puntuación en el reto:</p>
+            <div class="score-number" id="finalScore">0/0</div>
+            <p id="scoreFeedback" style="font-weight: 700; color: var(--accent-pink);"></p>
+            <button class="btn-restart" onclick="reiniciarJuego()">
+                <i class="fa-solid fa-rotate-right"></i> Jugar de nuevo
+            </button>
+        </div>
+    </div>
+
+    <!-- BOTONES FLOTANTES DE NAVEGACIÓN -->
+    <nav class="bottom-dock">
+        <a href="#" class="dock-item active">
+            <i class="fa-solid fa-house"></i>
+            <span>Inicio</span>
+        </a>
+        <a href="#" class="dock-item">
+            <i class="fa-solid fa-gamepad"></i>
+            <span>Arena</span>
+        </a>
+        <a href="#" class="dock-item">
+            <i class="fa-solid fa-trophy"></i>
+            <span>Ranking</span>
+        </a>
+    </nav>
+
+    <!-- LÓGICA JAVASCRIPT EN TIEMPO REAL -->
+    <script>
+        let puntaje = 0;
+        let preguntasRespondidas = 0;
+
+        function evaluarOpcion(elemento) {
+            const preguntaBox = elemento.closest('.pregunta-box');
+            const todasLasOpciones = preguntaBox.querySelectorAll('.opcion-item');
+
+            // Evitar que el usuario vuelva a hacer clic si ya respondió esta pregunta
+            if (preguntaBox.classList.contains('respondida')) return;
+
+            preguntaBox.classList.add('respondida');
+            preguntasRespondidas++;
+
+            const esCorrecta = elemento.getAttribute('data-correcta') === 'true';
+            const statusSpan = elemento.querySelector('.status-placeholder');
+
+            // Bloquear todas las opciones de esta pregunta
+            todasLasOpciones.forEach(opcion => {
+                opcion.classList.add('disabled');
+                
+                // Si el usuario falló, mostrarle cuál era la correcta
+                if (opcion.getAttribute('data-correcta') === 'true' && !esCorrecta) {
+                    opcion.classList.add('correct');
+                    opcion.querySelector('.status-placeholder').innerHTML = '<span class="badge-status badge-correct"><i class="fa-solid fa-check"></i> Solución</span>';
+                }
+            });
+
+            if (esCorrecta) {
+                elemento.classList.add('correct');
+                statusSpan.innerHTML = '<span class="badge-status badge-correct"><i class="fa-solid fa-check"></i> ¡Correcto!</span>';
+                puntaje++;
+            } else {
+                elemento.classList.add('incorrect');
+                statusSpan.innerHTML = '<span class="badge-status badge-incorrect"><i class="fa-solid fa-xmark"></i> Incorrecto</span>';
+            }
+
+            // Comprobar si respondió todas las preguntas del test
+            const totalPreguntas = document.querySelectorAll('.pregunta-box').length;
+            if (preguntasRespondidas === totalPreguntas) {
+                setTimeout(mostrarResultados, 800);
+            }
+        }
+
+        function mostrarResultados() {
+            const totalPreguntas = document.querySelectorAll('.pregunta-box').length;
+            const scoreElement = document.getElementById('finalScore');
+            const feedbackElement = document.getElementById('scoreFeedback');
+            const modal = document.getElementById('scoreModal');
+
+            scoreElement.textContent = `${puntaje} / ${totalPreguntas}`;
+
+            const porcentaje = (puntaje / totalPreguntas) * 100;
+            if (porcentaje === 100) {
+                feedbackElement.textContent = "¡Dominio total! Eres el rey de la Arena 👑";
+            } else if (porcentaje >= 60) {
+                feedbackElement.textContent = "¡Buen trabajo! Estás muy cerca de la cima ⚡";
+            } else {
+                feedbackElement.textContent = "Sigue entrenando, ¡vuelve a intentarlo! 🔥";
+            }
+
+            modal.style.display = 'flex';
+        }
+
+        function reiniciarJuego() {
+            location.reload();
+        }
+    </script>
+
+</body>
+</html>
