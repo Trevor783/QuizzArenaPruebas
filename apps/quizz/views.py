@@ -13,10 +13,12 @@ from .serializers import (
 class QuizzViewSet(viewsets.ModelViewSet):
     queryset = Quizz.objects.all()
     serializer_class = QuizzSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
 class PreguntaListAPIView(generics.ListCreateAPIView):
     queryset = Pregunta.objects.all()
     serializer_class = PreguntaSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
 class ListaQuizzesView(ListView):
     model = Quizz
