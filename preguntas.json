@@ -1,0 +1,508 @@
+{
+  "quizz": {
+    "titulo": "Evaluación de Programación Web y Backend",
+    "descripcion": "Cuestionario general sobre Python, Django, JavaScript y desarrollo web."
+  },
+  "preguntas": [
+    {
+      "pregunta": "¿Cuál de los siguientes tipos de datos en Python es INMUTABLE?",
+      "puntuacion": 10,
+      "opciones": [
+        {"texto": "Tupla (tuple)", "es_correcta": true},
+        {"texto": "Lista (list)", "es_correcta": false},
+        {"texto": "Diccionario (dict)", "es_correcta": false},
+        {"texto": "Conjunto (set)", "es_correcta": false}
+      ]
+    },
+    {
+      "pregunta": "¿Qué comando genera las migraciones en Django a partir de los modelos?",
+      "puntuacion": 10,
+      "opciones": [
+        {"texto": "python manage.py makemigrations", "es_correcta": true},
+        {"texto": "python manage.py migrate", "es_correcta": false},
+        {"texto": "python manage.py sqlmigrate", "es_correcta": false},
+        {"texto": "python manage.py collectstatic", "es_correcta": false}
+      ]
+    },
+    {
+      "pregunta": "¿Cuál es el decorador utilizado en Django REST Framework para definir un método personalizado de APIView o ViewSet?",
+      "puntuacion": 10,
+      "opciones": [
+        {"texto": "@action", "es_correcta": true},
+        {"texto": "@api_method", "es_correcta": false},
+        {"texto": "@custom_endpoint", "es_correcta": false},
+        {"texto": "@route_view", "es_correcta": false}
+      ]
+    },
+    {
+      "pregunta": "¿Qué método HTTP se utiliza habitualmente para actualizar completamente un recurso existente?",
+      "puntuacion": 10,
+      "opciones": [
+        {"texto": "PUT", "es_correcta": true},
+        {"texto": "POST", "es_correcta": false},
+        {"texto": "GET", "es_correcta": false},
+        {"texto": "PATCH", "es_correcta": false}
+      ]
+    },
+    {
+      "pregunta": "¿Cómo se define un entorno virtual en Python utilizando la librería estándar?",
+      "puntuacion": 10,
+      "opciones": [
+        {"texto": "python -m venv .venv", "es_correcta": true},
+        {"texto": "pip install virtualenv", "es_correcta": false},
+        {"texto": "django-admin startenv", "es_correcta": false},
+        {"texto": "python start virtualenv", "es_correcta": false}
+      ]
+    },
+    {
+      "pregunta": "¿Qué función de Python se utiliza para obtener la longitud de una lista o cadena?",
+      "puntuacion": 10,
+      "opciones": [
+        {"texto": "len()", "es_correcta": true},
+        {"texto": "size()", "es_correcta": false},
+        {"texto": "count()", "es_correcta": false},
+        {"texto": "length()", "es_correcta": false}
+      ]
+    },
+    {
+      "pregunta": "¿Cuál es el propósito principal del archivo 'settings.py' en un proyecto Django?",
+      "puntuacion": 10,
+      "opciones": [
+        {"texto": "Almacenar la configuración global y parámetros del proyecto", "es_correcta": true},
+        {"texto": "Definir las rutas URL principales", "es_correcta": false},
+        {"texto": "Manejar las peticiones HTTP entrantes", "es_correcta": false},
+        {"texto": "Crear las tablas de la base de datos automáticamente", "es_correcta": false}
+      ]
+    },
+    {
+      "pregunta": "¿Qué clase base se suele utilizar en Django REST Framework para un CRUD completo estándar?",
+      "puntuacion": 10,
+      "opciones": [
+        {"texto": "ModelViewSet", "es_correcta": true},
+        {"texto": "APIViewGeneric", "es_correcta": false},
+        {"texto": "TemplateView", "es_correcta": false},
+        {"texto": "CRUDController", "es_correcta": false}
+      ]
+    },
+    {
+      "pregunta": "¿Cuál de los siguientes selectores de CSS selecciona un elemento por su ID?",
+      "puntuacion": 10,
+      "opciones": [
+        {"texto": "#mi-id", "es_correcta": true},
+        {"texto": ".mi-id", "es_correcta": false},
+        {"texto": "mi-id", "es_correcta": false},
+        {"texto": "*mi-id", "es_correcta": false}
+      ]
+    },
+    {
+      "pregunta": "¿Qué palabra clave en JavaScript se utiliza para declarar una variable de ámbito de bloque que puede ser reasignada?",
+      "puntuacion": 10,
+      "opciones": [
+        {"texto": "let", "es_correcta": true},
+        {"texto": "var", "es_correcta": false},
+        {"texto": "const", "es_correcta": false},
+        {"texto": "static", "es_correcta": false}
+      ]
+    },
+    {
+      "pregunta": "¿Qué significa ORM en el contexto de bases de datos y desarrollo web?",
+      "puntuacion": 10,
+      "opciones": [
+        {"texto": "Object-Relational Mapping", "es_correcta": true},
+        {"texto": "Online Resource Management", "es_correcta": false},
+        {"texto": "Ordered Relational Model", "es_correcta": false},
+        {"texto": "Open Request Method", "es_correcta": false}
+      ]
+    },
+    {
+      "pregunta": "¿Cuál es el comando de Django para aplicar las migraciones pendientes a la base de datos?",
+      "puntuacion": 10,
+      "opciones": [
+        {"texto": "python manage.py migrate", "es_correcta": true},
+        {"texto": "python manage.py makemigrations", "es_correcta": false},
+        {"texto": "python manage.py runserver", "es_correcta": false},
+        {"texto": "python manage.py update", "es_correcta": false}
+      ]
+    },
+    {
+      "pregunta": "¿Qué tipo de campo en un modelo de Django se utiliza comúnmente para almacenar textos largos?",
+      "puntuacion": 10,
+      "opciones": [
+        {"texto": "TextField", "es_correcta": true},
+        {"texto": "CharField", "es_correcta": false},
+        {"texto": "LongTextField", "es_correcta": false},
+        {"texto": "StringField", "es_correcta": false}
+      ]
+    },
+    {
+      "pregunta": "¿Qué estructura de datos representa una colección ordenada y mutable de elementos en Python?",
+      "puntuacion": 10,
+      "opciones": [
+        {"texto": "Lista", "es_correcta": true},
+        {"texto": "Tupla", "es_correcta": false},
+        {"texto": "Conjunto", "es_correcta": false},
+        {"texto": "Diccionario", "es_correcta": false}
+      ]
+    },
+    {
+      "pregunta": "¿Qué protocolo se utiliza por defecto para transferir páginas web seguras (con cifrado SSL/TLS)?",
+      "puntuacion": 10,
+      "opciones": [
+        {"texto": "HTTPS", "es_correcta": true},
+        {"texto": "HTTP", "es_correcta": false},
+        {"texto": "FTP", "es_correcta": false},
+        {"texto": "SMTP", "es_correcta": false}
+      ]
+    },
+    {
+      "pregunta": "¿Cuál de las siguientes opciones describe correctamente a Git?",
+      "puntuacion": 10,
+      "opciones": [
+        {"texto": "Un sistema de control de versiones distribuido", "es_correcta": true},
+        {"texto": "Un lenguaje de programación interpretado", "es_correcta": false},
+        {"texto": "Un servidor web de alta concurrencia", "es_correcta": false},
+        {"texto": "Un gestor de paquetes para Python", "es_correcta": false}
+      ]
+    },
+    {
+      "pregunta": "¿Cómo se inicia un servidor de desarrollo local en Django?",
+      "puntuacion": 10,
+      "opciones": [
+        {"texto": "python manage.py runserver", "es_correcta": true},
+        {"texto": "django-admin start", "es_correcta": false},
+        {"texto": "python server.py", "es_correcta": false},
+        {"texto": "npm run dev", "es_correcta": false}
+      ]
+    },
+    {
+      "pregunta": "¿Qué componente de Django se encarga de procesar las URLs y dirigirlas a la vista correspondiente?",
+      "puntuacion": 10,
+      "opciones": [
+        {"texto": "urls.py (Enrutador)", "es_correcta": true},
+        {"texto": "models.py", "es_correcta": false},
+        {"texto": "views.py", "es_correcta": false},
+        {"texto": "wsgi.py", "es_correcta": false}
+      ]
+    },
+    {
+      "pregunta": "¿Qué es un Serializer en Django REST Framework?",
+      "puntuacion": 10,
+      "opciones": [
+        {"texto": "Un componente que convierte datos complejos (como modelos) en tipos nativos de Python para JSON", "es_correcta": true},
+        {"texto": "Un sistema para cifrar contraseñas de usuarios", "es_correcta": false},
+        {"texto": "Una herramienta para optimizar consultas SQL complejas", "es_correcta": false},
+        {"texto": "Un middleware de seguridad contra ataques CSRF", "es_correcta": false}
+      ]
+    },
+    {
+      "pregunta": "¿Cuál es el código de estado HTTP estándar que indica que una petición ha tenido éxito (OK)?",
+      "puntuacion": 10,
+      "opciones": [
+        {"texto": "200", "es_correcta": true},
+        {"texto": "404", "es_correcta": false},
+        {"texto": "500", "es_correcta": false},
+        {"texto": "201", "es_correcta": false}
+      ]
+    },
+    {
+      "pregunta": "¿Qué operador se utiliza en Python para comprobar si un elemento pertenece a una secuencia?",
+      "puntuacion": 10,
+      "opciones": [
+        {"texto": "in", "es_correcta": true},
+        {"texto": "is", "es_correcta": false},
+        {"texto": "contains", "es_correcta": false},
+        {"texto": "has", "es_correcta": false}
+      ]
+    },
+    {
+      "pregunta": "¿Qué significa el acrónimo API?",
+      "puntuacion": 10,
+      "opciones": [
+        {"texto": "Application Programming Interface", "es_correcta": true},
+        {"texto": "Advanced Program Interaction", "es_correcta": false},
+        {"texto": "Automated Protocol Integration", "es_correcta": false},
+        {"texto": "Application Process Integration", "es_correcta": false}
+      ]
+    },
+    {
+      "pregunta": "¿Cómo se define una función en Python?",
+      "puntuacion": 10,
+      "opciones": [
+        {"texto": "def nombre_funcion():", "es_correcta": true},
+        {"texto": "function nombre_funcion() {}", "es_correcta": false},
+        {"texto": "fun nombre_funcion():", "es_correcta": false},
+        {"texto": "define nombre_funcion():", "es_correcta": false}
+      ]
+    },
+    {
+      "pregunta": "¿Qué método HTTP se utiliza habitualmente para eliminar un recurso?",
+      "puntuacion": 10,
+      "opciones": [
+        {"texto": "DELETE", "es_correcta": true},
+        {"texto": "REMOVE", "es_correcta": false},
+        {"texto": "CLEAR", "es_correcta": false},
+        {"texto": "DROP", "es_correcta": false}
+      ]
+    },
+    {
+      "pregunta": "¿Cuál de las siguientes opciones describe el patrón arquitectónico de Django?",
+      "puntuacion": 10,
+      "opciones": [
+        {"texto": "MTV (Model-Template-View)", "es_correcta": true},
+        {"texto": "MVC (Model-View-Controller)", "es_correcta": false},
+        {"texto": "MVP (Model-View-Presenter)", "es_correcta": false},
+        {"texto": "MVVM (Model-View-ViewModel)", "es_correcta": false}
+      ]
+    },
+    {
+      "pregunta": "¿Qué comando de pip se utiliza para instalar los paquetes listados en un archivo requirements.txt?",
+      "puntuacion": 10,
+      "opciones": [
+        {"texto": "pip install -r requirements.txt", "es_correcta": true},
+        {"texto": "pip build requirements.txt", "es_correcta": false},
+        {"texto": "pip update -r requirements.txt", "es_correcta": false},
+        {"texto": "pip get requirements.txt", "es_correcta": false}
+      ]
+    },
+    {
+      "pregunta": "¿Qué etiqueta de HTML se utiliza para enlazar una hoja de estilos CSS externa?",
+      "puntuacion": 10,
+      "opciones": [
+        {"texto": "<link rel=\"stylesheet\" href=\"styles.css\">", "es_correcta": true},
+        {"texto": "<style src=\"styles.css\">", "es_correcta": false},
+        {"texto": "<css href=\"styles.css\">", "es_correcta": false},
+        {"texto": "<script src=\"styles.css\"></script>", "es_correcta": false}
+      ]
+    },
+    {
+      "pregunta": "¿Qué es un archivo JSON?",
+      "puntuacion": 10,
+      "opciones": [
+        {"texto": "Un formato ligero de intercambio de datos basado en texto", "es_correcta": true},
+        {"texto": "Una base de datos relacional completa", "es_correcta": false},
+        {"texto": "Un script de compilación para Java", "es_correcta": false},
+        {"texto": "Un entorno virtual de Python", "es_correcta": false}
+      ]
+    },
+    {
+      "pregunta": "¿Cuál es el resultado de la expresión booleana: True and False en Python?",
+      "puntuacion": 10,
+      "opciones": [
+        {"texto": "False", "es_correcta": true},
+        {"texto": "True", "es_correcta": false},
+        {"texto": "None", "es_correcta": false},
+        {"texto": "Error", "es_correcta": false}
+      ]
+    },
+    {
+      "pregunta": "¿Qué clase de modelo en Django proporciona automáticamente un campo de clave primaria autoincremental de tipo entero si no se especifica otro?",
+      "puntuacion": 10,
+      "opciones": [
+        {"texto": "models.Model", "es_correcta": true},
+        {"texto": "models.BaseModel", "es_correcta": false},
+        {"texto": "models.PrimaryModel", "es_correcta": false},
+        {"texto": "models.Entity", "es_correcta": false}
+      ]
+    },
+    {
+      "pregunta": "¿Qué método se utiliza en JavaScript para convertir una cadena de texto JSON en un objeto de JavaScript?",
+      "puntuacion": 10,
+      "opciones": [
+        {"texto": "JSON.parse()", "es_correcta": true},
+        {"texto": "JSON.stringify()", "es_correcta": false},
+        {"texto": "JSON.toObject()", "es_correcta": false},
+        {"texto": "JSON.convert()", "es_correcta": false}
+      ]
+    },
+    {
+      "pregunta": "¿Qué significa CORS en el desarrollo web moderno?",
+      "puntuacion": 10,
+      "opciones": [
+        {"texto": "Cross-Origin Resource Sharing", "es_correcta": true},
+        {"texto": "Cascading Object Request Service", "es_correcta": false},
+        {"texto": "Centralized Online Routing System", "es_correcta": false},
+        {"texto": "Control Origin Resource Security", "es_correcta": false}
+      ]
+    },
+    {
+      "pregunta": "¿Cuál de los siguientes métodos HTTP se considera idempotente (realizar la misma petición varias veces produce el mismo resultado)?",
+      "puntuacion": 10,
+      "opciones": [
+        {"texto": "PUT", "es_correcta": true},
+        {"texto": "POST", "es_correcta": false},
+        {"texto": "PATCH (en algunos contextos no estrictos)", "es_correcta": false},
+        {"texto": "Depende exclusivamente del navegador", "es_correcta": false}
+      ]
+    },
+    {
+      "pregunta": "¿Qué herramienta de Django permite interactuar con la base de datos mediante una consola interactiva de Python?",
+      "puntuacion": 10,
+      "opciones": [
+        {"texto": "python manage.py shell", "es_correcta": true},
+        {"texto": "python manage.py console", "es_correcta": false},
+        {"texto": "python manage.py dbshell", "es_correcta": false},
+        {"texto": "python manage.py dbcli", "es_correcta": false}
+      ]
+    },
+    {
+      "pregunta": "¿Cómo se define un comentario de una sola línea en Python?",
+      "puntuacion": 10,
+      "opciones": [
+        {"texto": "Usando el símbolo numeral (#)", "es_correcta": true},
+        {"texto": "Usando doble barra (//)", "es_correcta": false},
+        {"texto": "Usando /* y */", "es_correcta": false},
+        {"texto": "Usando la palabra clave comment", "es_correcta": false}
+      ]
+    },
+    {
+      "pregunta": "¿Qué código de estado HTTP indica que un recurso no ha sido encontrado?",
+      "puntuacion": 10,
+      "opciones": [
+        {"texto": "404", "es_correcta": true},
+        {"texto": "500", "es_correcta": false},
+        {"texto": "403", "es_correcta": false},
+        {"texto": "200", "es_correcta": false}
+      ]
+    },
+    {
+      "pregunta": "¿Cuál es la función del método __str__ en un modelo de Django?",
+      "puntuacion": 10,
+      "opciones": [
+        {"texto": "Devolver una representación en cadena de texto legible del objeto", "es_correcta": true},
+        {"texto": "Convertir el modelo completo a un formato JSON", "es_correcta": false},
+        {"texto": "Definir la tabla de la base de datos asociada", "es_correcta": false},
+        {"texto": "Validar los campos obligatorios antes de guardar", "es_correcta": false}
+      ]
+    },
+    {
+      "pregunta": "¿Qué método de un QuerySet de Django se usa para filtrar registros según ciertos parámetros?",
+      "puntuacion": 10,
+      "opciones": [
+        {"texto": "filter()", "es_correcta": true},
+        {"texto": "search()", "es_correcta": false},
+        {"texto": "find()", "es_correcta": false},
+        {"texto": "select()", "es_correcta": false}
+      ]
+    },
+    {
+      "pregunta": "¿Qué es una promesa (Promise) en JavaScript?",
+      "puntuacion": 10,
+      "opciones": [
+        {"texto": "Un objeto que representa la resolución o el rechazo de una operación asíncrona", "es_correcta": true},
+        {"texto": "Una variable constante que no puede cambiar de valor", "es_correcta": false},
+        {"texto": "Una función que se ejecuta de manera síncrona obligatoria", "es_correcta": false},
+        {"texto": "Un método para conectar bases de datos SQL desde el navegador", "es_correcta": false}
+      ]
+    },
+    {
+      "pregunta": "¿Cuál de las siguientes opciones es un framework de pruebas (testing) integrado en Python?",
+      "puntuacion": 10,
+      "opciones": [
+        {"texto": "unittest", "es_correcta": true},
+        {"texto": "jest", "es_correcta": false},
+        {"texto": "mocha", "es_correcta": false},
+        {"texto": "pytest (requiere instalación externa pero es el estándar)", "es_correcta": false}
+      ]
+    },
+    {
+      "pregunta": "¿Qué comando se utiliza para crear una supercuenta de administrador en Django?",
+      "puntuacion": 10,
+      "opciones": [
+        {"texto": "python manage.py createsuperuser", "es_correcta": true},
+        {"texto": "python manage.py createadmin", "es_correcta": false},
+        {"texto": "python manage.py addsuperuser", "es_correcta": false},
+        {"texto": "python manage.py adminuser", "es_correcta": false}
+      ]
+    },
+    {
+      "pregunta": "¿Qué tipo de relación en bases de datos se implementa mediante un campo ForeignKey en Django?",
+      "puntuacion": 10,
+      "opciones": [
+        {"texto": "Uno a muchos (One-to-Many)", "es_correcta": true},
+        {"texto": "Uno a uno (One-to-One)", "es_correcta": false},
+        {"texto": "Muchos a muchos (Many-to-Many)", "es_correcta": false},
+        {"texto": "Ninguna relación", "es_correcta": false}
+      ]
+    },
+    {
+      "pregunta": "¿Qué significan las siglas HTML?",
+      "puntuacion": 10,
+      "opciones": [
+        {"texto": "HyperText Markup Language", "es_correcta": true},
+        {"texto": "High Technical Modern Language", "es_correcta": false},
+        {"texto": "Hyper Transfer Machine Language", "es_correcta": false},
+        {"texto": "Hashed Text Management Link", "es_correcta": false}
+      ]
+    },
+    {
+      "pregunta": "¿Qué propiedad de CSS se utiliza para cambiar el color de fondo de un elemento?",
+      "puntuacion": 10,
+      "opciones": [
+        {"texto": "background-color", "es_correcta": true},
+        {"texto": "color", "es_correcta": false},
+        {"texto": "bg-color", "es_correcta": false},
+        {"texto": "fill-background", "es_correcta": false}
+      ]
+    },
+    {
+      "pregunta": "¿Qué función cumple el comando 'git clone'?",
+      "puntuacion": 10,
+      "opciones": [
+        {"texto": "Descargar una copia completa de un repositorio remoto existente", "es_correcta": true},
+        {"texto": "Crear una copia exacta de un archivo en la misma carpeta local", "es_correcta": false},
+        {"texto": "Subir los cambios locales al servidor principal", "es_correcta": false},
+        {"texto": "Fusionar dos ramas distintas de desarrollo", "es_correcta": false}
+      ]
+    },
+    {
+      "pregunta": "¿Cuál es la extensión de archivo predeterminada para los módulos de código en Python?",
+      "puntuacion": 10,
+      "opciones": [
+        {"texto": ".py", "es_correcta": true},
+        {"texto": ".pt", "es_correcta": false},
+        {"texto": ".python", "es_correcta": false},
+        {"texto": ".js", "es_correcta": false}
+      ]
+    },
+    {
+      "pregunta": "¿Qué decorador se utiliza habitualmente en las vistas basadas en funciones de Django para restringir el acceso solo a usuarios autenticados?",
+      "puntuacion": 10,
+      "opciones": [
+        {"texto": "@login_required", "es_correcta": true},
+        {"texto": "@auth_required", "es_correcta": false},
+        {"texto": "@user_logged", "es_correcta": false},
+        {"texto": "@permission_required", "es_correcta": false}
+      ]
+    },
+    {
+      "pregunta": "¿Qué operador lógico en Python representa la disyunción (O lógico)?",
+      "puntuacion": 10,
+      "opciones": [
+        {"texto": "or", "es_correcta": true},
+        {"texto": "and", "es_correcta": false},
+        {"texto": "not", "es_correcta": false},
+        {"texto": "xor", "es_correcta": false}
+      ]
+    },
+    {
+      "pregunta": "¿Qué significa que un lenguaje de programación sea de tipado dinámico como Python?",
+      "puntuacion": 10,
+      "opciones": [
+        {"texto": "Los tipos de las variables se determinan en tiempo de ejecución, no de compilación", "es_correcta": true},
+        {"texto": "No se pueden utilizar números enteros ni flotantes", "es_correcta": false},
+        {"texto": "Las variables cambian de valor automáticamente sin intervención", "es_correcta": false},
+        {"texto": "El código se ejecuta directamente en el navegador web", "es_correcta": false}
+      ]
+    },
+    {
+      "pregunta": "¿Cuál es el objetivo principal del panel de administración integrado de Django?",
+      "puntuacion": 10,
+      "opciones": [
+        {"texto": "Proporcionar una interfaz lista para gestionar los modelos de la base de datos", "es_correcta": true},
+        {"texto": "Diseñar la interfaz gráfica orientada al usuario final o cliente web", "es_correcta": false},
+        {"texto": "Compilar el código fuente para producción de forma automática", "es_correcta": false},
+        {"texto": "Analizar el rendimiento y consumo de memoria del servidor", "es_correcta": false}
+      ]
+    }
+  ]
+}
