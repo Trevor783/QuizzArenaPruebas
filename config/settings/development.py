@@ -47,3 +47,6 @@ CSRF_COOKIE_SECURE = False
 LOGGING["root"]["level"] = "DEBUG"
 
 LOGGING["loggers"]["django"]["level"] = "DEBUG"
+
+
+CORS_ALLOW_ALL_ORIGINS = True

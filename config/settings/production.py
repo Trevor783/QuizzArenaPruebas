@@ -1,4 +1,14 @@
 
+import os
+
+os.environ.setdefault(
+    "DJANGO_SECRET_KEY",
+    "django-insecure-secret_key_de_prueba_para_desarrollo_local_12345",
+)
+
+from .base import *
+
+
 # ============================================================
 # DEBUG
 # ============================================================
@@ -12,7 +22,7 @@ DEBUG = False
 
 ALLOWED_HOSTS = env.list(
     "ALLOWED_HOSTS",
-    default=[],
+    default=["localhost", "127.0.0.1"],
 )
 
 
@@ -21,7 +31,10 @@ ALLOWED_HOSTS = env.list(
 # ============================================================
 
 DATABASES = {
-    "default": env.db("DATABASE_URL"),
+    "default": env.db(
+        "DATABASE_URL",
+        default=f"sqlite:///{BASE_DIR / 'db.sqlite3'}",
+    ),
 }
 
 
@@ -41,12 +54,12 @@ CSRF_TRUSTED_ORIGINS = env.list(
 
 SECURE_SSL_REDIRECT = env.bool(
     "SECURE_SSL_REDIRECT",
-    default=True,
+    default=False,
 )
 
-SESSION_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = env.bool("SESSION_COOKIE_SECURE", default=False)
 
-CSRF_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = env.bool("CSRF_COOKIE_SECURE", default=False)
 
 
 # ============================================================

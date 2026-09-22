@@ -3,12 +3,11 @@ from django.conf.urls import include
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path
-from django.urls import path, include
-from django.views.generic import TemplateView
 from apps.core.views import home
 
 
 urlpatterns = [
+    path("", home, name="home"),
     path("admin/", admin.site.urls),
     path("api/quizz/", include("apps.quizz.urls")),
 ]
